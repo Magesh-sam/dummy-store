@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import type { FetchError, ProductsData } from '../lib/types'
 
 export const useFetchProducts = (
-  skip: number,
-  limit: number,
+  skip = 0,
+  limit = 20,
   retries = 3
 ) => {
   const [data, setData] = useState<ProductsData | null>(null)

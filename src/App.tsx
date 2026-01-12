@@ -1,4 +1,4 @@
-import ProductCard from "./component/ProductCard";
+import ProductCard from "./components/ProductCard";
 import { useFetchProducts } from "./hooks/useFetchProducts"
 import type { Product } from "./lib/types";
 

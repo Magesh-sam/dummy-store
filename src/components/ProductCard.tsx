@@ -1,6 +1,9 @@
 import { type FC } from 'react'
 import type { Product } from '../lib/types'
 import Rating from './Rating'
+import Cart from './icons/Cart'
+
+
 
 const ProductCard: FC<Product> = ({ title, price, rating, thumbnail, description }) => (
     <div className=' p-3 rounded-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex flex-col gap-3 '>
@@ -9,6 +12,10 @@ const ProductCard: FC<Product> = ({ title, price, rating, thumbnail, description
 
         <h3 className='text-2xl font-bold wrap-break-word'>{title}</h3>
         <h4 className='text-xl font-semibold'>${price}</h4>
+        <button className='max-w-sm w-fit px-3 py-2 rounded-sm  flex gap-2 items-center bg-blue-200'>
+            <span>Add to Cart</span>
+            <Cart />
+        </button>
     </div>
 )
 

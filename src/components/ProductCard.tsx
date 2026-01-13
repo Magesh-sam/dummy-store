@@ -12,7 +12,7 @@ const ProductCard: FC<Product> = ({ title, price, rating, thumbnail, description
 
         <h3 className='text-2xl font-bold wrap-break-word'>{title}</h3>
         <h4 className='text-xl font-semibold'>${price}</h4>
-        <button className='max-w-sm w-fit px-3 py-2 rounded-sm  flex gap-2 items-center bg-blue-200'>
+        <button className='max-w-sm w-fit px-3 py-2 rounded-sm  flex gap-2 items-center bg-blue-200 hover:cursor-pointer'>
             <span>Add to Cart</span>
             <Cart />
         </button>

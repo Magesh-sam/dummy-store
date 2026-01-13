@@ -18,7 +18,9 @@ function HomeProducts() {
             {
                 data?.products?.map((p: Product) => <ProductCard key={p.id} {...p} />)
             }
+
         </section>
+
 
 
     )

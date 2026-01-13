@@ -10,6 +10,12 @@ export type FetchError = {
     error: unknown | null
 }
 
+export type Category = {
+    slug: string,
+    name: string,
+    url: string,
+}
+
 /* Components */
 
 export type Product = {

@@ -1,12 +1,13 @@
-import useFetchCategories from '../hooks/UseFetchCategories';
+import useFetchCategories from '../hooks/useFetchCategories';
 import type { Category } from '../lib/types';
 import { Link } from 'react-router-dom';
+import CategorySkeleton from './skeletons/CategorySkeleton';
 
 const CategoryList = () => {
     const { isLoading, isError, error, categories } = useFetchCategories();
 
     if (isLoading) {
-        return <p className="text-white">Loading...</p>
+        return <CategorySkeleton/>
     }
 
     if (isError) {

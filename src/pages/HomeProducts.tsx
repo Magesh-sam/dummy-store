@@ -1,12 +1,13 @@
 
 import ProductCard from "../components/ProductCard";
+import ProductSkeleton from "../components/skeletons/ProductSkeleton";
 import { useFetchProducts } from "../hooks/useFetchProducts";
 import type { Product } from "../lib/types";
 
 function HomeProducts() {
     const { isLoading, isError, error, data } = useFetchProducts();
     if (isLoading) {
-        return <p>Loading</p>
+        return <ProductSkeleton/>
     }
     if (isError) {
         return <p>Error : {error?.message}</p>

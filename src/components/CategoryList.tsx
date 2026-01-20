@@ -7,7 +7,7 @@ const CategoryList = () => {
     const { isLoading, isError, error, categories } = useFetchCategories();
 
     if (isLoading) {
-        return <CategorySkeleton/>
+        return <CategorySkeleton />
     }
 
     if (isError) {
@@ -28,7 +28,7 @@ const CategoryList = () => {
                 <li key={c.slug || c.url}>
                     <Link
                         to={c.url}
-                        className=" hover:underline block py-1"
+                        className=" transition-all block p-1 hover:bg-blue-400 rounded-sm"
                     >
                         {c.name}
                     </Link>

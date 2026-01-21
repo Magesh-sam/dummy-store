@@ -27,7 +27,7 @@ const CategoryList = () => {
             {categories.map((c: Category) => (
                 <li key={c.slug || c.url}>
                     <Link
-                        to={c.url}
+                        to={`/products/${c.slug}`}
                         className=" transition-all block p-1 hover:bg-blue-400 rounded-sm"
                     >
                         {c.name}

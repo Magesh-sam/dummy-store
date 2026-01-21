@@ -12,7 +12,10 @@ const ProductsByCategory = () => {
         return <ProductSkeleton />
     }
     if (isError) {
-        return <p>Error : {error?.message}</p>
+        return <p className='text-red-500'>Error : {error?.message}</p>
+    }
+    if (data?.products.length === 0) {
+        return <p className='text-red-500'>No Products Found for : {slug}</p>
     }
     return (
 

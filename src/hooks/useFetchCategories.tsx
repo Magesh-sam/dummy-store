@@ -19,7 +19,6 @@ const useFetchCategories = (retries = 3) => {
 
         // Only call res.json() once
         const result: Category[] = await res.json();
-        console.log({ result })
         setCategories(result);
       }
       catch (err) {

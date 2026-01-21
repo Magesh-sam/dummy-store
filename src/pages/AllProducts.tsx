@@ -13,6 +13,9 @@ function AllProducts() {
     if (isError) {
         return <p>Error : {error?.message}</p>
     }
+    if (data?.products?.length === 0) {
+        return <p>No Products Found</p>
+    }
     return (
 
         <section className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-3 mx-3 my-3">

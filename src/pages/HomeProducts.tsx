@@ -13,6 +13,9 @@ function HomeProducts() {
     if (isError) {
         return <p>Error : {error?.message}</p>
     }
+    if (data?.products.length === 0) {
+        return <p className='text-red-500'>No Products Found</p>
+    }
     return (
 
         <>

@@ -1,12 +1,14 @@
+import { useSearchParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import ProductSkeleton from "../components/skeletons/ProductSkeleton";
 import { useFetchProducts } from "../hooks/useFetchProducts";
 import type { Product } from "../lib/types";
 
 function AllProducts() {
-    const { isLoading, isError, error, data } = useFetchProducts(0,
-        100,
-    );
+
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get("q") ?? "";
+    const { isLoading, isError, error, data } = useFetchProducts({ limit: 100, query });
     if (isLoading) {
         return <ProductSkeleton />
     }

@@ -63,7 +63,7 @@ const useFetchProductsByCategory = (category: string, retries = 3, retryDelay = 
             controller.abort();
             clearTimeout(timeoutId);
         }
-    }, [retries, retryDelay,category])
+    }, [retries, retryDelay, category])
     return { isLoading, data, isError, error }
 }
 

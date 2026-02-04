@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import type { FetchError, ProductsData } from '../lib/types'
 
-export const useFetchProducts = (
+export const useFetchProducts = ({
   skip = 0,
   limit = 20,
   retries = 3,
-  retryDelay = 1000 // Add a default delay (ms)
+  retryDelay = 1000, // Add a default delay (ms)
+  query = '' }
 ) => {
   const [data, setData] = useState<ProductsData | null>(null)
   const [isLoading, setIsLoading] = useState(true);
@@ -23,10 +24,13 @@ export const useFetchProducts = (
         setIsError(false)
         setError(null)
       }
+      const url = query
+        ? `https://dummyjson.com/products/search?q=${query}&limit=${limit}&skip=${skip}`
+        : `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
 
       try {
         const res = await fetch(
-          `https://dummyjson.com/products?limit=${limit}&skip=${skip}`,
+          url,
           { signal: controller.signal }
         )
 
@@ -68,7 +72,7 @@ export const useFetchProducts = (
       controller.abort()
       clearTimeout(timeoutId) // Clean up the timer if the component unmounts mid-wait
     }
-  }, [skip, limit, retries, retryDelay])
+  }, [skip, limit, retries, retryDelay, query])
 
   return { isLoading, data, isError, error }
 }

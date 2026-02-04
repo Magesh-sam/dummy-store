@@ -1,9 +1,23 @@
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect, useState, } from "react";
 import CategoryList from "./components/CategoryList";
 
 const Layout = () => {
     const [open, setOpen] = useState(true);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [value, setValue] = useState("");
+    const nav = useNavigate();
+
+    useEffect(() => {
+        setValue(searchParams.get("q") ?? "");
+    }, [searchParams]);
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            nav(value ? `/products?q=${value}` : "/products");
+        }
+    };
+
 
     return (
         <main className="min-h-screen relative bg-white text-black">
@@ -39,6 +53,13 @@ const Layout = () => {
                         <a href="/" className="mx-auto font-bold text-2xl">
                             Dummy Store
                         </a>
+                        <input type="search" name="searchproducts" id="searchproducts" className="px-3 py-2  bg-white rounded-sm" value={value} onChange={(e) => {
+                            const v = e.target.value;
+                            setValue(v);
+                            if (v === "") {
+                                setSearchParams({});
+                            }
+                        }} onKeyDown={handleKeyDown} />
                     </nav>
                 </header>
 

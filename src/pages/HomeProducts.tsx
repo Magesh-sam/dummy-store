@@ -6,7 +6,7 @@ import { useFetchProducts } from "../hooks/useFetchProducts";
 import type { Product } from "../lib/types";
 
 function HomeProducts() {
-    const { isLoading, isError, error, data } = useFetchProducts();
+    const { isLoading, isError, error, data } = useFetchProducts({});
     if (isLoading) {
         return <ProductSkeleton />
     }
@@ -28,7 +28,7 @@ function HomeProducts() {
             </section>
             <div className="w-full flex justify-center items-center">
 
-            <Link className="mx-auto" to={"/products"}>View All Products</Link>
+                <Link className="mx-auto" to={"/products"}>View All Products</Link>
             </div>
         </>
 

@@ -53,7 +53,8 @@ const Layout = () => {
                         <a href="/" className="mx-auto font-bold text-2xl">
                             Dummy Store
                         </a>
-                        <input type="search" name="searchproducts" id="searchproducts" className="px-3 py-2  bg-white rounded-sm" value={value} onChange={(e) => {
+                        <label htmlFor="searchproducts" className="sr-only">Search Products</label>
+                        <input type="search" name="searchproducts" id="searchproducts" placeholder="search products..." className="px-3 py-2  bg-white rounded-sm" value={value} onChange={(e) => {
                             const v = e.target.value;
                             setValue(v);
                             if (v === "") {

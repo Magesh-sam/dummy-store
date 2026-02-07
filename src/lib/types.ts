@@ -30,5 +30,15 @@ export type Product = {
     thumbnail: string,
 }
 
+
+export type CartItem = Product & { quantity: number }
+
+
+export interface CartSliceState {
+    cartItems: CartItem[],
+    totalQuantity: number,
+    totalPrice: number
+}
+
 export type RatingProps = { rating: number }
 

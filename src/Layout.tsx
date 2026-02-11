@@ -1,6 +1,7 @@
 import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
-import { useEffect, useState, } from "react";
+import { useEffect, useState, type ChangeEvent, } from "react";
 import CategoryList from "./components/CategoryList";
+import Navbar from "./Navbar";
 
 const Layout = () => {
     const [open, setOpen] = useState(true);
@@ -17,6 +18,18 @@ const Layout = () => {
             nav(value ? `/products?q=${value}` : "/products");
         }
     };
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const v = e.target?.value;
+        setValue(v);
+        if (v === "") {
+            setSearchParams({});
+        }
+    }
+
+    const toggleMenu = () => {
+        setOpen(!open);
+    }
 
 
     return (
@@ -40,29 +53,7 @@ const Layout = () => {
                 ${open ? "ml-48" : "ml-0"}`}
             >
                 {/* Header */}
-                <header className="bg-blue-300 sticky top-0 z-20">
-                    <nav className="p-5 flex items-center">
-                        <button
-                            onClick={() => setOpen(!open)}
-                            className="p-2 hover:cursor-e-resize rounded transition-colors"
-                            aria-label="Toggle sidebar"
-                        >
-                            ☰
-                        </button>
-
-                        <a href="/" className="mx-auto font-bold text-2xl">
-                            Dummy Store
-                        </a>
-                        <label htmlFor="searchproducts" className="sr-only">Search Products</label>
-                        <input type="search" name="searchproducts" id="searchproducts" placeholder="search products..." className="px-3 py-2  bg-white rounded-sm" value={value} onChange={(e) => {
-                            const v = e.target.value;
-                            setValue(v);
-                            if (v === "") {
-                                setSearchParams({});
-                            }
-                        }} onKeyDown={handleKeyDown} />
-                    </nav>
-                </header>
+                    <Navbar value={value} toggleMenu={toggleMenu} handleChange={handleChange} handleKeyDown={handleKeyDown} />
 
                 {/* Content */}
                 <section className="overflow-y-auto p-4">

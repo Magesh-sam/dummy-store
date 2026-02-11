@@ -1,3 +1,5 @@
+import type { ChangeEvent } from "react"
+
 export type ProductsData = {
     products: [],
     total: number,
@@ -38,6 +40,14 @@ export interface CartSliceState {
     cartItems: CartItem[],
     totalQuantity: number,
     totalPrice: number
+}
+
+export interface NavbarProps {
+    value:string,
+    toggleMenu:()=>void,
+    handleChange:(e:ChangeEvent<HTMLInputElement>)=>void,
+    handleKeyDown:(e: React.KeyboardEvent<HTMLInputElement>)=>void,
+
 }
 
 export type RatingProps = { rating: number }

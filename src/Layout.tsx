@@ -1,7 +1,7 @@
 import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState, type ChangeEvent, } from "react";
 import CategoryList from "./components/CategoryList";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 
 const Layout = () => {
     const [open, setOpen] = useState(true);

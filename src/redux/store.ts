@@ -1,7 +1,7 @@
-import { persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./RootReducer";
+import rootReducer from "./rootReducer";
 
 const persistConfig = {
     key: "root",
@@ -14,7 +14,7 @@ export const store = configureStore({
     reducer: persistedReducer
 })
 
-
+export const persistor = persistStore(store);
 
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { NavbarProps } from '../lib/types';
+import OpenCart from './icons/OpenCart';
 
 function Navbar({ value, toggleMenu, handleChange, handleKeyDown }: NavbarProps) {
     return (
@@ -14,15 +15,13 @@ function Navbar({ value, toggleMenu, handleChange, handleKeyDown }: NavbarProps)
                     ☰
                 </button>
 
-                    <div className='  '>
-                        <label htmlFor="searchproducts" className="sr-only">Search Products</label>
-                        <input type="search" name="searchproducts" id="searchproducts" placeholder="search products..." className="px-3 py-2  bg-white rounded-sm" value={value} onChange={handleChange} onKeyDown={handleKeyDown} />
-                    </div>
-                    <Link to="/your-cart" aria-label='view cart'  >
-                    <span>
-                        <img src="/opencart.svg" alt="open cart logoS" width={25} height={25} />
-                    </span>
-                    </Link>
+                <div className='  '>
+                    <label htmlFor="searchproducts" className="sr-only">Search Products</label>
+                    <input type="search" name="searchproducts" id="searchproducts" placeholder="search products..." className="px-3 py-2  bg-white rounded-sm" value={value} onChange={handleChange} onKeyDown={handleKeyDown} />
+                </div>
+                <Link to="/your-cart" aria-label='view cart'  >
+                    <OpenCart />
+                </Link>
             </nav>
         </header>
     )
